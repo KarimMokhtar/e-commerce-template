@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import { auth } from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 import HomePage from "./pages/homepage/homepage";
 import ShopPage from "./pages/shope/shop";
@@ -13,9 +13,15 @@ function App() {
 
   useEffect(() => {
     let unsubscribeFromAuth = null;
-    unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      setUser(user);
-      console.log(user);
+    unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const userRef = await createUserProfileDocument(user);
+        userRef.onSnapshot((snapShot) => {
+          setUser({ id: snapShot.id, ...snapShot.data() });
+        });
+      } else {
+        setUser(user);
+      }
     });
 
     return () => {
@@ -25,7 +31,7 @@ function App() {
 
   return (
     <>
-      <Header user={user}/>
+      <Header user={user} />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/shop" component={ShopPage} />
