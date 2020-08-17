@@ -1,7 +1,7 @@
 import React from "react";
 
-import CustomButton from "../components/custom-button/custom-button";
 import "./cart-dropdown.scss";
+import CustomButton from "../custom-button/custom-button";
 
 const CartDropdown = () => {
   return (

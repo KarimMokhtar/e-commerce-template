@@ -5,7 +5,7 @@ import "./header.scss";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon";
-import CartDropdown from "../../cart-dropdown/cart-dropdown";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown";
 const Header = ({ currentUser, hidden }) => (
   <div className="header">
     <Link to="/" className="logo-container">
