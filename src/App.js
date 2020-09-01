@@ -12,6 +12,7 @@ import SingInUp from "./pages/sign-in-up/sign-in-up";
 import { setCurrentUser } from "./redux/user/actions";
 
 import { selectCurrentUser } from "./redux/user/selector";
+import Checkout from "./pages/checkout/checkout";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -39,6 +40,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
+          <Route exact path='/checkout' component={Checkout}/>
           <Route
             exact
             path="/signin"
