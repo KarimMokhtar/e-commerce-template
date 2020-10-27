@@ -2,7 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import "./App.css";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import {
+  auth,
+  createUserProfileDocument,
+} from "./firebase/firebase.utils";
 import { createStructuredSelector } from "reselect";
 
 import HomePage from "./pages/homepage/homepage";
@@ -40,7 +43,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
-          <Route exact path='/checkout' component={Checkout}/>
+          <Route exact path="/checkout" component={Checkout} />
           <Route
             exact
             path="/signin"
