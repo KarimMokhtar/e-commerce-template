@@ -11,10 +11,13 @@ import SingInUp from "./pages/sign-in-up/sign-in-up";
 
 import { selectCurrentUser } from "./redux/user/selector";
 import Checkout from "./pages/checkout/checkout";
+import { checkUserSession } from "./redux/user/actions";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
   componentDidMount() {
+    const { checkUserSession } = this.props;
+    checkUserSession();
     // this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
     //   if (user) {
     //     const userRef = await createUserProfileDocument(user);
@@ -54,4 +57,8 @@ class App extends React.Component {
 const mapStateToProps = createStructuredSelector({
   user: selectCurrentUser,
 });
-export default connect(mapStateToProps)(App);
+
+const mapDispatchToProps = (dispatch) => ({
+  checkUserSession: () => dispatch(checkUserSession()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(App);
