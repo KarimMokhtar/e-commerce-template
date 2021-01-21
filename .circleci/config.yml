@@ -16,5 +16,6 @@ jobs:
 workflows:
   version: 2.1
   jobs_running:
-    - first_job
-    - second_job
+    jobs:
+      - first_job
+      - second_job
