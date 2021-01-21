@@ -1,8 +1,21 @@
 version: 2.1
 jobs:
-  build:
+  first_job:
     docker:
       - image: cimg/node:14.10.1 # the primary container, where your job's commands are run
     steps:
       - checkout # check out the code in the project directory
-      - run: echo "first circle ci check " # run the `echo` command
+      - run: echo "first job to run within circle ci " # run the `echo` command
+  second_job:
+    docker:
+      - image: cimg/node:14.10.1 # the primary container, where your job's commands are run
+    steps:
+      - checkout # check out the code in the project directory
+      - run: echo "this is the second job " # run the `echo` command
+
+workflows:
+  version: 2.1
+  jobs_running:
+    jobs:
+      - first_job
+      - second_job
