@@ -14,7 +14,7 @@ jobs:
       - run: echo "this is the second job " # run the `echo` command
 
 workflows:
-  version: 2
+  version: 2.1
   jobs_running:
     - first_job
     - second_job
